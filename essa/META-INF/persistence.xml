@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="siscomjavaPU" transaction-type="RESOURCE_LOCAL">
+    <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+    <class>br.com.siscom.bean.Banco</class>
+    <class>br.com.siscom.bean.Cartao</class>
+    <class>br.com.siscom.bean.TipoPgto</class>
+    <class>br.com.siscom.bean.Cliente</class>
+    <class>br.com.siscom.bean.ClienteEndereco</class>
+    <class>br.com.siscom.bean.Fornecedor</class>
+    <class>br.com.siscom.bean.Produto</class>
+    <class>br.com.siscom.bean.Unidade</class>
+    <class>br.com.siscom.bean.CorreiosCeps</class>
+    <class>br.com.siscom.bean.PlanoConta</class>
+    <class>br.com.siscom.bean.Departamento</class>
+    <class>br.com.siscom.bean.Funcionario</class>
+    <class>br.com.siscom.bean.VendaDet</class>
+    <class>br.com.siscom.bean.VendaCab</class>
+    <class>br.com.siscom.bean.OrcDet</class>
+    <class>br.com.siscom.bean.OrcCab</class>
+    <class>br.com.siscom.bean.CotCab</class>
+    <class>br.com.siscom.bean.CotDet</class>
+    <class>br.com.siscom.bean.PedidoCab</class>
+    <class>br.com.siscom.bean.ReqCab</class>
+    <class>br.com.siscom.bean.PedidoDet</class>
+    <class>br.com.siscom.bean.ReqDet</class>
+    <class>br.com.siscom.bean.NfeCab</class>
+    <class>br.com.siscom.bean.NfeDet</class>
+    <class>br.com.siscom.bean.Pagamento</class>
+    <class>br.com.siscom.bean.Recebimento</class>
+    <class>br.com.siscom.bean.NivelAcesso</class>
+    <properties>
+      <property name="toplink.jdbc.user" value="root"/>
+      <property name="toplink.jdbc.password" value="12345"/>
+      <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/siscomjava"/>
+      <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+    </properties>
+  </persistence-unit>
+</persistence>

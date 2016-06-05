@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fd564d72-c84a-4dfd-b29c-90a5856c0149">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="valor" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     nfe_cab.`NUM_NFE_CAB` AS nfe_cab_NUM_NFE_CAB,
+     nfe_cab.`COD_CFOP` AS nfe_cab_COD_CFOP,
+     nfe_cab.`COD_FORNECEDOR` AS nfe_cab_COD_FORNECEDOR,
+     nfe_cab.`EMISSAO_NFE_CAB` AS nfe_cab_EMISSAO_NFE_CAB,
+     nfe_cab.`ENTRADA_NFE_CAB` AS nfe_cab_ENTRADA_NFE_CAB,
+     nfe_cab.`TOTAL_NFE_CAB` AS nfe_cab_TOTAL_NFE_CAB,
+     nfe_det.`NUM_NFE_CAB` AS nfe_det_NUM_NFE_CAB,
+     nfe_det.`COD_PRODUTO` AS nfe_det_COD_PRODUTO,
+     nfe_det.`QTDE_NFE_DET` AS nfe_det_QTDE_NFE_DET,
+     nfe_det.`VLR_UNIT_NFE_DET` AS nfe_det_VLR_UNIT_NFE_DET,
+     nfe_det.`VLR_TOTAL_NFE_DET` AS nfe_det_VLR_TOTAL_NFE_DET
+FROM
+     `nfe_cab` nfe_cab INNER JOIN `nfe_det` nfe_det ON nfe_cab.`NUM_NFE_CAB` = nfe_det.`NUM_NFE_CAB`
+where nfe_cab.`NUM_NFE_CAB`=$P{valor}]]>
+	</queryString>
+	<field name="nfe_cab_NUM_NFE_CAB" class="java.lang.Integer"/>
+	<field name="nfe_cab_COD_CFOP" class="java.lang.Integer"/>
+	<field name="nfe_cab_COD_FORNECEDOR" class="java.lang.Integer"/>
+	<field name="nfe_cab_EMISSAO_NFE_CAB" class="java.sql.Date"/>
+	<field name="nfe_cab_ENTRADA_NFE_CAB" class="java.sql.Date"/>
+	<field name="nfe_cab_TOTAL_NFE_CAB" class="java.lang.Double"/>
+	<field name="nfe_det_NUM_NFE_CAB" class="java.lang.Integer"/>
+	<field name="nfe_det_COD_PRODUTO" class="java.lang.String"/>
+	<field name="nfe_det_QTDE_NFE_DET" class="java.lang.Integer"/>
+	<field name="nfe_det_VLR_UNIT_NFE_DET" class="java.lang.Double"/>
+	<field name="nfe_det_VLR_TOTAL_NFE_DET" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="3c67ffb7-272a-4e58-9847-6a35e3ed0d26"/>
+				<text><![CDATA[nfe_cab_NUM_NFE_CAB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="667bfa13-303f-405e-aad4-5e12eb458e52"/>
+				<text><![CDATA[nfe_cab_COD_CFOP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="100" height="20" uuid="2a554c54-93d1-4c04-8065-2ff8df621bb0"/>
+				<text><![CDATA[nfe_cab_COD_FORNECEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="1df9f1a4-056f-4231-82a9-f55410bed110"/>
+				<text><![CDATA[nfe_cab_TOTAL_NFE_CAB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="2" width="100" height="20" uuid="d7cd89d1-f723-47da-9964-049916de7eb0"/>
+				<text><![CDATA[nfe_det_NUM_NFE_CAB]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="55" width="100" height="20" uuid="5ab60572-a7ef-420c-b260-a5c6d8a2f013"/>
+				<textFieldExpression><![CDATA[$F{nfe_cab_NUM_NFE_CAB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="55" width="100" height="20" uuid="697edff7-30c9-4ea0-9941-b30356d11bf8"/>
+				<textFieldExpression><![CDATA[$F{nfe_cab_COD_CFOP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="55" width="100" height="20" uuid="9be8c65b-4920-4484-969b-41a77db66e9f"/>
+				<textFieldExpression><![CDATA[$F{nfe_cab_COD_FORNECEDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="55" width="100" height="20" uuid="24031fd2-8de3-4363-abe5-1a10be5da96f"/>
+				<textFieldExpression><![CDATA[$F{nfe_cab_TOTAL_NFE_CAB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="55" width="100" height="20" uuid="1bc58896-ab05-434f-a6ba-0362d41a82da"/>
+				<textFieldExpression><![CDATA[$F{nfe_det_NUM_NFE_CAB}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

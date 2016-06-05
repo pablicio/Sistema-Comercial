@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN" "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+<toc version="2.0">
+    <tocitem text="Sistema Comercial">
+       <tocitem text="Início" target="Inicio"/>
+       <tocitem text="Mais Sobre o SISCOM" target="MaisSobreOSiscom"/>
+       <tocitem text="Instalação" target="Instalacao"/>
+       <tocitem text="Usando o Programa" target="UsandoOPrograma"/>
+       <tocitem text="Clientes" target="Clientes"/>
+       <tocitem text="Produtos" target="Produtos"/>
+       <tocitem text="Departamentos" target="Departamentos"/>
+       <tocitem text="Funcionarios" target="Funcionarios"/>
+       <tocitem text="Cartões" target="Cartoes"/>
+       <tocitem text="Plano de Contas" target="PlanoDeContas"/>
+        <tocitem text="Tipo Pgto/Rcbto" target="TipoPgto"/>
+
+       <tocitem text="Fornecedores" target="Fornecedores"/>
+       <tocitem text="Contas Bancárias" target="Contas_Bancarias"/>
+       <tocitem text="Unidades" target="Unidades"/>
+       
+   </tocitem>
+</toc>

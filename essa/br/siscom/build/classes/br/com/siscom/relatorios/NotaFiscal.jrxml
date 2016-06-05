@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5cad52fa-b80f-4701-aa44-9e6b2837b99a">
+	<property name="ireport.zoom" value="1.8150000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ss" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="venda" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cliente.`COD_CLIENTE` AS cliente_COD_CLIENTE,
+     cliente.`NOME_CLIENTE` AS cliente_NOME_CLIENTE,
+     funcionario.`NOME_FUNCIONARIO` AS funcionario_NOME_FUNCIONARIO,
+     funcionario.`COD_FUNCIONARIO` AS funcionario_COD_FUNCIONARIO,
+     nfe_cab.`NUM_NFE_CAB` AS nfe_cab_NUM_NFE_CAB,
+     nfe_cab.`COD_CFOP` AS nfe_cab_COD_CFOP,
+     nfe_cab.`COD_FORNECEDOR` AS nfe_cab_COD_FORNECEDOR,
+     nfe_cab.`EMISSAO_NFE_CAB` AS nfe_cab_EMISSAO_NFE_CAB,
+     nfe_cab.`ENTRADA_NFE_CAB` AS nfe_cab_ENTRADA_NFE_CAB,
+     nfe_cab.`TOTAL_NFE_CAB` AS nfe_cab_TOTAL_NFE_CAB,
+     nfe_det.`NUM_NFE_CAB` AS nfe_det_NUM_NFE_CAB,
+     nfe_det.`COD_PRODUTO` AS nfe_det_COD_PRODUTO,
+     nfe_det.`QTDE_NFE_DET` AS nfe_det_QTDE_NFE_DET,
+     nfe_det.`VLR_UNIT_NFE_DET` AS nfe_det_VLR_UNIT_NFE_DET,
+     nfe_det.`VLR_TOTAL_NFE_DET` AS nfe_det_VLR_TOTAL_NFE_DET,
+     produto.`COD_PRODUTO` AS produto_COD_PRODUTO,
+     produto.`COD_FORNECEDOR` AS produto_COD_FORNECEDOR,
+     produto.`DESCRICAO_PRODUTO` AS produto_DESCRICAO_PRODUTO,
+     produto.`VLR_COMPRA_PRODUTO` AS produto_VLR_COMPRA_PRODUTO,
+     produto.`VLR_VENDA_PRODUTO` AS produto_VLR_VENDA_PRODUTO,
+     venda_det.`COD_VENDA_CAB` AS venda_det_COD_VENDA_CAB,
+     venda_det.`COD_PRODUTO` AS venda_det_COD_PRODUTO,
+     venda_det.`QTDE_VENDA_DET` AS venda_det_QTDE_VENDA_DET,
+     venda_det.`VLR_UNIT_VENDA_DET` AS venda_det_VLR_UNIT_VENDA_DET,
+     venda_det.`VLR_TOTAL_VENDA_DET` AS venda_det_VLR_TOTAL_VENDA_DET,
+     venda_cab.`COD_VENDA_CAB` AS venda_cab_COD_VENDA_CAB,
+     venda_cab.`COD_CFOP` AS venda_cab_COD_CFOP,
+     venda_cab.`COD_CARTAO` AS venda_cab_COD_CARTAO,
+     venda_cab.`COD_TIPO_PGTO` AS venda_cab_COD_TIPO_PGTO,
+     venda_cab.`COD_CLIENTE` AS venda_cab_COD_CLIENTE,
+     venda_cab.`COD_FUNCIONARIO` AS venda_cab_COD_FUNCIONARIO,
+     venda_cab.`DATA_VENDA_CAB` AS venda_cab_DATA_VENDA_CAB,
+     venda_cab.`VLR_VENDA_CAB` AS venda_cab_VLR_VENDA_CAB,
+     venda_cab.`DESCONTO_VENDA_CAB` AS venda_cab_DESCONTO_VENDA_CAB,
+     venda_cab.`TOTAL_VENDA_CAB` AS venda_cab_TOTAL_VENDA_CAB,
+     venda_cab.`NUM_PARCELAS_VENDA_CAB` AS venda_cab_NUM_PARCELAS_VENDA_CAB,
+     venda_cab.`PRI_VENCIMENTO_VENDA_CAB` AS venda_cab_PRI_VENCIMENTO_VENDA_CAB,
+     venda_cab.`NUM_NF_VENDA_CAB` AS venda_cab_NUM_NF_VENDA_CAB,
+     cfop.`COD_CFOP` AS cfop_COD_CFOP,
+     cfop.`DESCRICAO_CFOP` AS cfop_DESCRICAO_CFOP
+FROM
+     `nfe_cab` nfe_cab INNER JOIN `nfe_det` nfe_det ON nfe_cab.`NUM_NFE_CAB` = nfe_det.`NUM_NFE_CAB`
+     INNER JOIN `produto` produto ON nfe_det.`COD_PRODUTO` = produto.`COD_PRODUTO`
+     INNER JOIN `venda_det` venda_det ON produto.`COD_PRODUTO` = venda_det.`COD_PRODUTO`
+     INNER JOIN `venda_cab` venda_cab ON venda_det.`COD_VENDA_CAB` = venda_cab.`COD_VENDA_CAB`
+     INNER JOIN `cliente` cliente ON venda_cab.`COD_CLIENTE` = cliente.`COD_CLIENTE`
+     INNER JOIN `funcionario` funcionario ON venda_cab.`COD_FUNCIONARIO` = funcionario.`COD_FUNCIONARIO`
+     INNER JOIN `cfop` cfop ON venda_cab.`COD_CFOP` = cfop.`COD_CFOP`
+     AND cfop.`COD_CFOP` = nfe_cab.`COD_CFOP`
+where 
+venda_cab.`COD_VENDA_CAB`= $P{venda}
+and nfe_cab.`NUM_NFE_CAB`=$P{ss}]]>
+	</queryString>
+	<field name="cliente_COD_CLIENTE" class="java.lang.Integer"/>
+	<field name="cliente_NOME_CLIENTE" class="java.lang.String"/>
+	<field name="funcionario_NOME_FUNCIONARIO" class="java.lang.String"/>
+	<field name="funcionario_COD_FUNCIONARIO" class="java.lang.Integer"/>
+	<field name="nfe_cab_NUM_NFE_CAB" class="java.lang.Integer"/>
+	<field name="nfe_cab_COD_CFOP" class="java.lang.Integer"/>
+	<field name="nfe_cab_COD_FORNECEDOR" class="java.lang.Integer"/>
+	<field name="nfe_cab_EMISSAO_NFE_CAB" class="java.sql.Date"/>
+	<field name="nfe_cab_ENTRADA_NFE_CAB" class="java.sql.Date"/>
+	<field name="nfe_cab_TOTAL_NFE_CAB" class="java.lang.Double"/>
+	<field name="nfe_det_NUM_NFE_CAB" class="java.lang.Integer"/>
+	<field name="nfe_det_COD_PRODUTO" class="java.lang.String"/>
+	<field name="nfe_det_QTDE_NFE_DET" class="java.lang.Integer"/>
+	<field name="nfe_det_VLR_UNIT_NFE_DET" class="java.lang.Double"/>
+	<field name="nfe_det_VLR_TOTAL_NFE_DET" class="java.lang.Double"/>
+	<field name="produto_COD_PRODUTO" class="java.lang.String"/>
+	<field name="produto_COD_FORNECEDOR" class="java.lang.Integer"/>
+	<field name="produto_DESCRICAO_PRODUTO" class="java.lang.String"/>
+	<field name="produto_VLR_COMPRA_PRODUTO" class="java.lang.Double"/>
+	<field name="produto_VLR_VENDA_PRODUTO" class="java.lang.Double"/>
+	<field name="venda_det_COD_VENDA_CAB" class="java.lang.Integer"/>
+	<field name="venda_det_COD_PRODUTO" class="java.lang.String"/>
+	<field name="venda_det_QTDE_VENDA_DET" class="java.lang.Integer"/>
+	<field name="venda_det_VLR_UNIT_VENDA_DET" class="java.lang.Double"/>
+	<field name="venda_det_VLR_TOTAL_VENDA_DET" class="java.lang.Double"/>
+	<field name="venda_cab_COD_VENDA_CAB" class="java.lang.Integer"/>
+	<field name="venda_cab_COD_CFOP" class="java.lang.Integer"/>
+	<field name="venda_cab_COD_CARTAO" class="java.lang.Integer"/>
+	<field name="venda_cab_COD_TIPO_PGTO" class="java.lang.Integer"/>
+	<field name="venda_cab_COD_CLIENTE" class="java.lang.Integer"/>
+	<field name="venda_cab_COD_FUNCIONARIO" class="java.lang.Integer"/>
+	<field name="venda_cab_DATA_VENDA_CAB" class="java.sql.Date"/>
+	<field name="venda_cab_VLR_VENDA_CAB" class="java.lang.Double"/>
+	<field name="venda_cab_DESCONTO_VENDA_CAB" class="java.lang.Double"/>
+	<field name="venda_cab_TOTAL_VENDA_CAB" class="java.lang.Double"/>
+	<field name="venda_cab_NUM_PARCELAS_VENDA_CAB" class="java.lang.Integer"/>
+	<field name="venda_cab_PRI_VENCIMENTO_VENDA_CAB" class="java.sql.Date"/>
+	<field name="venda_cab_NUM_NF_VENDA_CAB" class="java.lang.Integer"/>
+	<field name="cfop_COD_CFOP" class="java.lang.Integer"/>
+	<field name="cfop_DESCRICAO_CFOP" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<rectangle>
+				<reportElement x="267" y="0" width="288" height="113" uuid="d65b2863-89e4-47f2-829a-896f876dd896"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="143" height="113" uuid="c286baa3-7717-43f6-b302-3315328fe974"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="143" y="0" width="124" height="113" uuid="bfb83dc8-ca88-46b1-a897-1fd7e8f7729d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="153" y="0" width="114" height="17" uuid="b56e8966-e70a-4a01-a094-5743c16c87a3"/>
+				<text><![CDATA[DANFE]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="429" y="0" width="126" height="62" uuid="17264789-abd3-4e44-91ca-c1d7112fe70a"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<image>
+				<reportElement x="0" y="0" width="82" height="62" uuid="ba220518-1c14-4dfa-9d1d-712b7d6c4da7"/>
+				<imageExpression><![CDATA["C:\\Users\\pablicio\\Documents\\essa\\br\\siscom\\src\\br\\com\\siscom\\imagens\\SISCOM.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="153" y="17" width="114" height="17" uuid="fa071c6e-37c8-4077-bf98-b377eeded49b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Documento auxiliar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="33" width="114" height="17" uuid="102f175e-f2f0-49e4-8567-0d97aa4c2d06"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Da nota filcal eletrônica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="50" width="80" height="12" uuid="34a72acd-1253-4ef1-824b-61671e2ce08c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[0 - entrada 1 - saída]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="50" width="14" height="12" uuid="67a3f9d1-fb6e-4004-a5ca-63faf23d1472"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="79" width="288" height="17" uuid="3d37d144-4d22-404c-9c58-aad20f039d37"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consulta de autenticidade no portal da NF-e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="62" width="288" height="17" uuid="3b622604-fef2-4b1a-94b5-6c905499de4d"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[chave: 3443 5565 4444 55665 9899 0082 3300 0000 3323 2222 00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="96" width="288" height="17" uuid="610f59de-c2e4-4208-8db7-d448a70dc9da"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[www.nfe.fazenda.gov.br/portal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="62" width="143" height="17" uuid="ef50e078-727f-4c29-8514-1a9702a32b89"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Comercial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="96" width="100" height="17" uuid="adb10b94-089e-4f2b-8cfa-fb42fee6078f"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thiago Pablício]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="100" height="17" uuid="b40b1200-dade-4bf6-87db-57178215c9c2"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Murilo Gustavo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="358" y="0" width="197" height="24" uuid="b5165ffd-1176-44b7-808b-404257d0903f"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[CNPJ: 12.767.987/0001-54]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="358" height="24" uuid="535876cc-1953-4e1a-8da5-55b9ede14e60"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="24" width="555" height="12" uuid="418e624b-fb9c-4f00-a67b-8fcf025a287d"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<text><![CDATA[Destinatário/Remetente:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="267" height="20" uuid="60357ad6-162f-4f2b-afde-68d2e24b354d"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Natureza da Operação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="0" width="288" height="20" uuid="d5c2e9da-5add-437a-b613-cf18dd01d446"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Descrição estadual do sub. tributário:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="202" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="92" width="555" height="30" uuid="42619e59-cb79-4049-bbaa-c67e94453cec"/>
+			</rectangle>
+			<textField>
+				<reportElement x="397" y="102" width="100" height="20" uuid="9143bcad-211f-4ede-90c7-2c98c3af67f5"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{venda_cab_TOTAL_VENDA_CAB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="394" y="92" width="100" height="10" uuid="1c688d22-6fd9-4b7a-b6df-56c805d68dfa"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Valor Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="297" y="102" width="100" height="20" uuid="0c90fdd0-b94b-4524-ac45-db1fea74fb4c"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{venda_cab_DESCONTO_VENDA_CAB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="297" y="92" width="100" height="10" uuid="d6a33718-f47e-47b0-bd62-c7b079ac6421"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Valor Desconto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="197" y="102" width="100" height="20" uuid="cb0a4a79-f89c-4ebb-a94b-48dd5f5a5d00"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{venda_cab_VLR_VENDA_CAB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="92" width="100" height="10" uuid="f37cb10c-f51e-42b2-bf12-ff01d828958f"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Valor Original:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="97" y="102" width="100" height="20" uuid="bafac3c6-137f-408b-bfa6-66f6b255d9c1"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nfe_cab_NUM_NFE_CAB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="97" y="92" width="100" height="10" uuid="2c821618-6b26-42a4-9d90-133fe75cabeb"/>
+				<box leftPadding="6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Número:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="267" height="20" uuid="7bc5b37e-2cf3-4794-a1de-489ca0baec15"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cfop_DESCRICAO_CFOP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="267" height="20" uuid="37287d91-e59f-4eac-8804-618da0a932da"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nome/Razão social: SISCOM SA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="20" width="151" height="20" uuid="7371468c-afae-4443-b8d8-ff9d569ed3f0"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CNPJ: 12.767.987/0001-54]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="20" width="65" height="20" uuid="f185a725-aa52-4e72-aaad-696848591511"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Data de Emissão:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="143" height="20" uuid="47015cf0-3a59-47aa-a335-f0241f988328"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Endereço: Rua Filomena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="40" width="151" height="20" uuid="bbcc2493-989a-474b-95c2-b8cdc8e52f75"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Bairro/Distrito: Biqueira da Papuda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="143" height="20" uuid="1fb02781-c4a3-4999-8d9a-e675a3fec411"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Município: Campina Grande]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="60" width="124" height="20" uuid="a5d57162-e8f6-4839-a6bf-756317222197"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Inscrição Estadual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="40" width="124" height="20" uuid="c24352b2-740a-4957-89d6-7500ae3b5df8"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CEP:58.410.082]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="0" width="288" height="20" uuid="0dfe2056-dd99-4800-b690-0a3fe197f9f4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="245" y="182" width="100" height="20" uuid="6cea657e-202d-4b5d-a609-0544b7b9b41a"/>
+				<textFieldExpression><![CDATA[$F{venda_cab_COD_VENDA_CAB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="182" width="48" height="20" uuid="45e0e858-10e1-4279-abf8-445980a1044d"/>
+				<text><![CDATA[cod]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="60" width="115" height="20" uuid="5b39ba9d-c8a2-40e8-9af4-5368d27c7183"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Fone/Fax:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="60" width="36" height="20" uuid="b7815297-e312-4af1-93c5-9ef8682db9c2"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[UF: PB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="40" width="137" height="20" uuid="a32af75f-89dd-46a6-8409-d46e6144a317"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Data de Saída:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="60" width="137" height="20" uuid="43bd81e5-c0c2-46f0-b537-ab69e9152eab"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Hora de Saída:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="555" height="12" uuid="9d9a5cf7-6721-4995-9572-d65c104aee33"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<text><![CDATA[Fatura:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

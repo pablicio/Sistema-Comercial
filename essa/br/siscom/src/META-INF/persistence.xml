@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="siscomrefatorado?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.com.siscom.beans.Banco</class>
+    <class>br.com.siscom.beans.TipoPgto</class>
+    <class>br.com.siscom.beans.Cartao</class>
+    <class>br.com.siscom.beans.ClienteEndereco</class>
+    <class>br.com.siscom.beans.Cliente</class>
+    <class>br.com.siscom.beans.Fornecedores</class>
+    <class>br.com.siscom.beans.Produto</class>
+    <class>br.com.siscom.beans.Unidade</class>
+    <class>br.com.siscom.beans.Cidades</class>
+    <class>br.com.siscom.beans.PlanoConta</class>
+    <class>br.com.siscom.beans.Departamento</class>
+    <class>br.com.siscom.beans.Funcionario</class>
+    <class>br.com.siscom.beans.VendaDet</class>
+    <class>br.com.siscom.beans.VendaCab</class>
+    <class>br.com.siscom.beans.OrcDet</class>
+    <class>br.com.siscom.beans.OrcCab</class>
+    <class>br.com.siscom.beans.CotCab</class>
+    <class>br.com.siscom.beans.CotDet</class>
+    <class>br.com.siscom.beans.ReqCab</class>
+    <class>br.com.siscom.beans.ReqDet</class>
+    <class>br.com.siscom.beans.PedidoDet</class>
+    <class>br.com.siscom.beans.PedidoCab</class>
+    <class>br.com.siscom.view.estoque.Cfop</class>
+    <class>br.com.siscom.beans.Cfop</class>
+    <class>br.com.siscom.beans.NfeCab</class>
+    <class>br.com.siscom.beans.NfeDet</class>
+    <class>br.com.siscom.beans.Recebimento</class>
+    <class>br.com.siscom.beans.Pagamento</class>
+    <class>br.com.siscom.view.ChequeNcomp</class>
+    <class>br.com.siscom.beans.Conciliacao</class>
+    <class>br.com.siscom.beans.Movimento</class>
+    <class>br.com.siscom.beans.NivelAcesso</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/siscomrefatorado?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="123"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="siscom?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.com.siscom.view.NfeCab</class>
+    <class>br.com.siscom.view.NfeDet</class>
+    <class>br.com.siscom.beans.NfeCab</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/siscom?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="123"/>
+    </properties>
+  </persistence-unit>
+</persistence>

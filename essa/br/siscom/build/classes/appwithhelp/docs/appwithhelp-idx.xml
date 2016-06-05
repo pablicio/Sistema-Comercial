@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 2.0//EN" "http://java.sun.com/products/javahelp/index_2_0.dtd">
+<index version="2.0">
+    <indexitem text="Sistema Comercial">
+        <indexitem text="Sobre o SISCOM" target="Inicio"/>
+        <indexitem text="Mais Sobre o SISCOM" target="MaisSobreOSiscom"/>
+        <indexitem text="Instalação" target="Instalacao"/>
+        <indexitem text="Clientes" target="Clientes"/>
+        <indexitem text="Produtos" target="Produtos"/>
+        <indexitem text="Departamentos" target="Departamentos"/>
+        <indexitem text="Funcionarios" target="Funcionarios"/>
+        <indexitem text="Cartoes" target="Cartoes"/>
+        <indexitem text="Plano de Contas" target="PlanoDeContas"/>
+        <indexitem text="Tipo Pgto/Rcbto" target="TipoPgto"/>
+
+
+        <indexitem text="Fornecedores" target="Fornecedores"/>
+        <indexitem text="Contas_Bancarias" target="Contas_Bancarias"/>
+        <indexitem text="Unidades" target="Unidades"/>
+
+    </indexitem>
+</index>
